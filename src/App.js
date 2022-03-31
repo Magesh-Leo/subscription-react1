@@ -3,60 +3,112 @@ import './App.css';
 import Pricingcard from './pricing';
 
 function App() {
-  let pricings = [
+  let plans = [
     {
-      subscription:"Free",
+      planName:"Free",
       price:0,
       period:"/month",
-      userRes:{user:"Single User",strong:false},
-      storage:"5GB Storage",
-      access:"Unlimited Public Projects",
-      checkAccess:"Community Access",
-      projects:{scheme:"Unlimited Private Projects",Available:false},
-      support:{scheme:"Dedicated Phone Support",Available:false},
-      domain:{scheme:"Free Subdomain",Available:false,feature:"",strong:false},
-      report:{scheme:"Monthly Status Reports",Available:false},
+      features:{
+        userRestriction:{
+          user:"Single User",
+          isBold:false
+        },
+        storage:"5GB Storage",
+        access:"Unlimited Public Projects",
+        platformAccess:"Community Access",
+        projects:{
+          scheme:"Unlimited Private Projects",
+          isDisable:false
+        },
+        support:{
+          scheme:"Dedicated Phone Support",
+          isDisable:false
+        },
+        subdomain:{
+          scheme:"Free Subdomain",
+          isDisable:false,
+          feature:"",
+          isBold:false
+        },
+        statusReport:{
+          scheme:"Monthly Status Reports",
+          isDisable:false
+        }
+      }
     },
     {
-      subscription:"Plus",
+      planName:"Plus",
       price:9,
       period:"/month",
-      userRes:{user:"5 Users",strong:true},
-      storage:"50GB Storage",
-      access:"Unlimited Public Projects",
-      checkAccess:"Community Access",
-      projects:{scheme:"Unlimited Private Projects",Available:true},
-      support:{scheme:"Dedicated Phone Support",Available:true},
-      domain:{scheme:"Free Subdomain",Available:true,feature:"",strong:false},
-      report:{scheme:"Monthly Status Reports",Available:false},
+      features:{
+        userRestriction:{
+          user:"5 User",
+          isBold:true
+        },
+        storage:"50GB Storage",
+        access:"Unlimited Public Projects",
+        platformAccess:"Community Access",
+        projects:{
+          scheme:"Unlimited Private Projects",
+          isDisable:true
+        },
+        support:{
+          scheme:"Dedicated Phone Support",
+          isDisable:true
+        },
+        subdomain:{
+          scheme:"Free Subdomain",
+          isDisable:true,
+          feature:"",
+          isBold:false
+        },
+        statusReport:{
+          scheme:"Monthly Status Reports",
+          isDisable:false
+        }
+      }
     },
     {
-      subscription:"Pro",
+      planName:"Pro",
       price:49,
       period:"/month",
-      userRes:{user:"Unlimited Users",strong:true},
-      storage:"5GB Storage",
-      access:"Unlimited Public Projects",
-      checkAccess:"Community Access",
-      projects:{scheme:"Unlimited Private Projects",Available:true},
-      support:{scheme:"Dedicated Phone Support",Available:true},
-      domain:{scheme:"Free Subdomain",Available:true,feature:"Unlimited ",strong:true},
-      report:{scheme:"Monthly Status Reports",Available:true},
-    },
+      features:{
+        userRestriction:{
+          user:"Unlimited Users",
+          isBold:true
+        },
+        storage:"150GB Storage",
+        access:"Unlimited Public Projects",
+        platformAccess:"Community Access",
+        projects:{
+          scheme:"Unlimited Private Projects",
+          isDisable:true
+        },
+        support:{
+          scheme:"Dedicated Phone Support",
+          isDisable:true
+        },
+        subdomain:{
+          scheme:"Free Subdomain",
+          isDisable:true,
+          feature:"Unlimited ",
+          isBold:true
+        },
+        statusReport:{
+          scheme:"Monthly Status Reports",
+          isDisable:true
+        }
+      }
+    }
   ]
   return (
     <>
-    <section class="pricing py-5">
-        <div class="container">
-            <div class="row">
+    <section className="pricing py-5">
+        <div className="container">
+            <div className="row">
                 {
-                  pricings.map((price) => {
-                    return <Pricingcard subscription={price.subscription} price={price.price} period={price.period} 
-                    userRes={price.userRes.user} checkuserRes={price.userRes.strong} storage={price.storage} access={price.access} projects={price.projects.scheme}
-                    report={price.report.scheme} support={price.support.scheme} domain={price.domain.scheme}
-                    checkAccess= {price.checkAccess} checkprojects={price.projects.Available} checkdomain={price.domain.Available}
-                    checkdomainStrong = {price.domain.strong} domainFeature = {price.domain.feature}
-                    checksupport={price.support.Available}checkreport={price.report.Available}></Pricingcard>
+                  plans.map((price) => {
+                    return <Pricingcard plan={price}></Pricingcard>
                   })
                 }
             </div>

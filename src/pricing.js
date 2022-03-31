@@ -2,31 +2,31 @@ import './style1.css';
 export default function Pricingcard(props){
     return <>
     
-    <div class="col-lg-4">
-        <div class="card mb-5 mb-lg-0">
+    <div className="col-lg-4">
+        <div className="card mb-5 mb-lg-0">
             <div class="card-body">
-                <h5 class="card-title text-muted text-uppercase text-center">{props.subscription}</h5>
-                <h6 class="card-price text-center">${props.price}<span class="period">{props.period}</span></h6>
+                <h5 className="card-title text-muted text-uppercase text-center">{props.plan.planName}</h5>
+                <h6 className="card-price text-center">${props.plan.price}<span class="period">{props.plan.period}</span></h6>
                 <hr></hr>
-                <ul class="fa-ul">
+                <ul className="fa-ul">
                     {
-                        props.checkuserRes ? <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>{props.userRes}</strong></li> : <li><span class="fa-li"><i class="fas fa-check"></i></span>{props.userRes}</li>
+                        props.plan.features.userRestriction.isBold ? <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>{props.plan.features.userRestriction.user}</strong></li> : <li><span class="fa-li"><i class="fas fa-check"></i></span>{props.plan.features.userRestriction.user}</li>
+                        
                     }
-                    <li><span class="fa-li"><i class="fas fa-check"></i></span>{props.userRes}</li>
-                    <li><span class="fa-li"><i class="fas fa-check"></i></span>{props.storage}</li>
-                    <li><span class="fa-li"><i class="fas fa-check"></i></span>{props.access}</li>
-                    <li><span class="fa-li"><i class="fas fa-check"></i></span>{props.checkAccess}</li>
+                    <li><span class="fa-li"><i class="fas fa-check"></i></span>{props.plan.features.storage}</li>
+                    <li><span class="fa-li"><i class="fas fa-check"></i></span>{props.plan.features.access}</li>
+                    <li><span class="fa-li"><i class="fas fa-check"></i></span>{props.plan.features.platformAccess}</li>
                     {
-                        props.checkprojects ? <li><span class="fa-li"><i class="fas fa-check"></i></span>{props.projects}</li> : <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>{props.projects}</li>
-                    }
-                    {
-                        props.checksupport ? <li><span class="fa-li"><i class="fas fa-check"></i></span>{props.support}</li> : <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>{props.support}</li>
+                        props.plan.features.projects.isDisable ? <li><span class="fa-li"><i class="fas fa-check"></i></span>{props.plan.features.projects.scheme}</li> : <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>{props.plan.features.projects.scheme}</li>
                     }
                     {
-                        props.checkdomain || props.checkdomainStrong ? <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>{props.domainFeature}</strong>{props.domain}</li> : <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>{props.domain}</li>
+                        props.plan.features.support.isDisable ? <li><span class="fa-li"><i class="fas fa-check"></i></span>{props.plan.features.support.scheme}</li> : <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>{props.plan.features.support.scheme}</li>
                     }
                     {
-                        props.checkreport ? <li><span class="fa-li"><i class="fas fa-check"></i></span>{props.report}</li> : <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>{props.report}</li>
+                        props.plan.features.subdomain.isDisable || props.plan.features.subdomain.isBold ? <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>{props.plan.features.subdomain.feature}</strong>{props.plan.features.subdomain.scheme}</li> : <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>{props.plan.features.subdomain.scheme}</li>
+                    }
+                    {
+                        props.plan.features.statusReport.isDisable ? <li><span class="fa-li"><i class="fas fa-check"></i></span>{props.plan.features.statusReport.scheme}</li> : <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>{props.plan.features.statusReport.scheme}</li>
                     }
                     
                 </ul>
